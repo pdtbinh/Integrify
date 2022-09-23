@@ -82,7 +82,7 @@ export const User = ({ users }) => {
             <Section title='Phone' value={user.phone}/>
             <Section title='Company' value={user.company.name}/>
             <Section title='Address' value={`${user.address.street}, ${user.address.suite},  ${user.address.city}  ${user.address.zipcode}`}/>
-            <Link style={gridItemStyle} to={`/users`}>
+            <Link style={gridItemStyle} to={`/`}>
                 <button style={buttonStyle}>Back</button>
             </Link>
         </div>

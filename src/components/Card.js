@@ -82,7 +82,7 @@ export const Card = ({ user }) => (
         <p style={nameStyle}>{user.name}</p>
         <p style={usernameStyle}>@{user.username}</p>
         <a style={websiteStyle} href={`http://${user.website}`}>http://{user.website}</a>
-        <Link to={`/users/${user.id}`}>
+        <Link to={`/${user.id}`}>
             <button style={buttonStyle}>View more</button>
         </Link>
     </div>

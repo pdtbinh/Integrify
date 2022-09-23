@@ -30,8 +30,8 @@ function App() {
     <Router>
       <div style={appStyle}>
         <Routes>
-          <Route exact path='/users' element={<Users users={users}/>}/>
-          <Route exact path='/users/:id' element={<User users={users}/>}/>
+          <Route exact path='/' element={<Users users={users}/>}/>
+          <Route exact path='/:id' element={<User users={users}/>}/>
         </Routes>
       </div>
     </Router>
