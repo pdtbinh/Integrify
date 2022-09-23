@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Users, User } from "./components/Users";
 
+const appStyle = {
+  'display': 'flex',
+  'flexDirection': 'row',
+  'alignItems': 'center',
+  'justifyContent': 'center',
+}
+
+// Requirement 1: Use functional React component
 function App() {
+
+  // Requirement 2: Use React useState
+  const [users, setUsers] = useState([])
+
+  const fetchData = async () => {
+    const fetched = await axios.get('https://jsonplaceholder.typicode.com/users')
+    setUsers(fetched.data)
+  }
+
+  // Requirement 3: Use React useEffect
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={appStyle}>
+        <Routes>
+          <Route exact path='/users' element={<Users users={users}/>}/>
+          <Route exact path='/users/:id' element={<User users={users}/>}/>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
